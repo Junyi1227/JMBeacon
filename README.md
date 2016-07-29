@@ -23,7 +23,7 @@ let locationManager = CLLocationManager()
 locationManager.delegate = self
 
 if (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.authorizedAlways) {
-locationManager.requestAlwaysAuthorization()
+    locationManager.requestAlwaysAuthorization()
 }
 
 ```
@@ -43,36 +43,34 @@ locationManager.startMonitoring(for: region)
 ```
 //範圍內的Beaacons
 func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-if (beacons.count > 0) {
-let beacon = beacons[0] as CLBeacon //只取最近的Beacon
+    if (beacons.count > 0) {
+        let beacon = beacons[0] as CLBeacon //只取最近的Beacon
 
-print("UUID == %@",beacon.proximityUUID.uuidString)
-print("beacon.major == %@",beacon.major)
-print("beacon.minor == %@",beacon.minor)
-print("beacon.accuracy == %@",beacon.accuracy)
-print("beacon.proximity == %@",beacon.proximity)
+        print("UUID == %@",beacon.proximityUUID.uuidString)
+        print("beacon.major == %@",beacon.major)
+        print("beacon.minor == %@",beacon.minor)
+        print("beacon.accuracy == %@",beacon.accuracy)
+        print("beacon.proximity == %@",beacon.proximity)
 
-if (beacon.proximity == .unknown) {
-print("beacon.proximity == Unknown Proximity")
-} else if (beacon.proximity == .immediate) {
-print("beacon.proximity == Immediate")
-} else if (beacon.proximity == .near) {
-print("beacon.proximity == Near")
-} else if (beacon.proximity == .far) {
-print("beacon.proximity == Far")
-}
-}
+        if (beacon.proximity == .unknown) {
+            print("beacon.proximity == Unknown Proximity")
+        } else if (beacon.proximity == .immediate) {
+            print("beacon.proximity == Immediate")
+        } else if (beacon.proximity == .near) {
+            print("beacon.proximity == Near")
+        } else if (beacon.proximity == .far) {
+            print("beacon.proximity == Far")
+        }
+    }
 
 }
 
 //進入beacon區域
 func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-//
 }
 
 //離開beacon區域
 func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-//
 }
 ```
 到這邊應該就可以順利取得資料囉
